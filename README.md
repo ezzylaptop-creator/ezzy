@@ -7,7 +7,11 @@
 - Dockerfile → container aplikasi
 - requirements.txt → dependency Python
 - .gitignore → menghindari file tidak penting
-- 
+
+## Demo Akun
+Username: admin  
+Password: ezzy
+
 ## Kegunaan Aplikasi
 
 Aplikasi ini digunakan untuk mensimulasikan penggunaan layanan cloud AWS secara lokal.
