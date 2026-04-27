@@ -8,7 +8,7 @@ Aplikasi sederhana Flask yang memakai LocalStack sebagai cloud emulator dengan m
 ## Cara menjalankan
 
 ```bash
-docker compose up --build
+docker compose up -d
 ```
 
 Buka:
