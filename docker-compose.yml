@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  localstack:
+    image: localstack/localstack:latest
+    container_name: localstack-file-notes
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3,sqs
+      - DEFAULT_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+      - DEBUG=0
+    volumes:
+      - "./.localstack:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  app:
+    build: .
+    container_name: file-notes-app
+    ports:
+      - "5000:5000"
+    environment:
+      - AWS_ENDPOINT_URL=http://localstack:4566
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+      - AWS_DEFAULT_REGION=us-east-1
+      - S3_BUCKET=file-notes-bucket
+      - SQS_QUEUE=file-notes-queue
+    depends_on:
+      - localstack
