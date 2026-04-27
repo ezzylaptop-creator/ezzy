@@ -1,13 +1,25 @@
-# Cloud Emulator File Notes
+# File Notes Cloud Emulator
 
-Aplikasi sederhana menggunakan Cloud Emulator (LocalStack) dengan:
+Aplikasi sederhana Flask yang memakai LocalStack sebagai cloud emulator dengan minimal 2 service:
 
-- Amazon S3 → untuk penyimpanan file
-- Amazon SQS → untuk message queue
+1. Amazon S3 emulator untuk menyimpan file.
+2. Amazon SQS emulator untuk menyimpan notifikasi upload.
 
-## Cara Menjalankan
+## Cara menjalankan
 
 ```bash
-pip install -r requirements.txt
-docker compose up -d
-python app.py
+docker compose up --build
+```
+
+Buka:
+
+```text
+http://localhost:5000
+```
+
+## Alur aplikasi
+
+1. User upload file dan menulis catatan.
+2. File disimpan ke bucket S3 lokal.
+3. Aplikasi mengirim pesan notifikasi ke antrean SQS lokal.
+4. User dapat melihat daftar file S3 dan mengambil pesan SQS.
