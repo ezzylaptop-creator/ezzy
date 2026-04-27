@@ -1,5 +1,13 @@
 # File Notes Cloud Emulator
 
+## Struktur Project
+
+- app.py → aplikasi utama
+- docker-compose.yml → menjalankan LocalStack
+- Dockerfile → container aplikasi
+- requirements.txt → dependency Python
+- .gitignore → menghindari file tidak penting
+- 
 ## Kegunaan Aplikasi
 
 Aplikasi ini digunakan untuk mensimulasikan penggunaan layanan cloud AWS secara lokal.
